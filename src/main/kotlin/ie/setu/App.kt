@@ -1,4 +1,8 @@
 package ie.setu
+import ie.setu.config.JavalinConfig
 
-class App {
+fun main() {
+
+    JavalinConfig().startJavalinService()
+
 }
