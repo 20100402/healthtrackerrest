@@ -12,7 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>1.7.20-RC</kotlin.version>
+        <kotlin.version>1.7.0-RC2</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
         <junit.jupiter.version>5.8.2</junit.jupiter.version>
         <junit.platform.version>1.8.2</junit.platform.version>
@@ -30,6 +30,7 @@
             <version>${kotlin.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- Adding JUnit 5 dependency -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -42,30 +43,32 @@
             <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <!-- removing the following 3 dependencies when adding javalin bundle for Swagger docs-->
         <!-- Adding Javalin dependency -->
-        <dependency>
+        <!--dependency>
             <groupId>io.javalin</groupId>
             <artifactId>javalin</artifactId>
             <version>4.6.1</version>
-        </dependency>
+        </dependency-->
         <!-- These Logging Dependencies are required; warning appears otherwise when running -->
-        <dependency>
+        <!--dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>2.0.3</version>
-        </dependency>
-        <dependency>
+            <version>2.0.0-alpha7</version>
+        </dependency-->
+        <!--dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>2.0.3</version>
-        </dependency>
+            <version>2.0.0-alpha7</version>
+        </dependency-->
+
         <!-- json dependency for localhost running -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.13.4.1</version>
+            <version>2.13.3</version>
         </dependency>
+        <!-- json dependency for serialising json to objects -->
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
@@ -89,6 +92,7 @@
             <artifactId>kotlin-logging</artifactId>
             <version>1.12.5</version>
         </dependency>
+        <!-- used bundle to enable openapi swagger documentation -->
         <dependency>
             <groupId>io.javalin</groupId>
             <artifactId>javalin-bundle</artifactId>
@@ -99,6 +103,13 @@
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-joda</artifactId>
             <version>2.13.3</version>
+        </dependency>
+        <!-- dependencies for functional/integration testing -->
+        <dependency>
+            <groupId>com.konghq</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>3.13.11</version>
+            <classifier>standalone</classifier>
         </dependency>
     </dependencies>
 
@@ -128,6 +139,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Heroku assembly plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -152,6 +164,7 @@
                     </archive>
                 </configuration>
             </plugin>
+            <!-- Heroku SDK plugin -->
             <plugin>
                 <groupId>com.heroku.sdk</groupId>
                 <artifactId>heroku-maven-plugin</artifactId>
@@ -165,6 +178,7 @@
                     </processTypes>
                 </configuration>
             </plugin>
+            <!-- surefire plugin MOJO - for testing during maven lifecycle-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>

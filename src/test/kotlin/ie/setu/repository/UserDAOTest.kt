@@ -1,8 +1,9 @@
 package ie.setu.repository
 
-import ie.setu.domain.User
 import ie.setu.domain.db.Users
+import ie.setu.domain.User
 import ie.setu.domain.repository.UserDAO
+import ie.setu.helpers.nonExistingEmail
 import ie.setu.helpers.users
 import junit.framework.TestCase.assertEquals
 import org.jetbrains.exposed.sql.Database
@@ -11,8 +12,6 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import ie.setu.helpers.nonExistingEmail
-import ie.setu.helpers.users
 
 //retrieving some test data from Fixtures
 val user1 = users.get(0)
@@ -70,7 +69,6 @@ class UserDAOTest {
                 //Act & Assert
                 assertEquals(null, userDAO.findById(4))
             }
-
         }
 
         @Test
@@ -109,7 +107,6 @@ class UserDAOTest {
                 assertEquals(user2, userDAO.findByEmail(user2.email))
             }
         }
-
     }
 
     @Nested
@@ -126,37 +123,6 @@ class UserDAOTest {
                 assertEquals(user1, userDAO.findById(user1.id))
                 assertEquals(user2, userDAO.findById(user2.id))
                 assertEquals(user3, userDAO.findById(user3.id))
-            }
-        }
-    }
-
-    @Nested
-    inner class DeleteUsers {
-        @Test
-        fun `deleting a non-existant user in table results in no deletion`() {
-            transaction {
-
-                //Arrange - create and populate table with three users
-                val userDAO = populateUserTable()
-
-                //Act & Assert
-                assertEquals(3, userDAO.getAll().size)
-                userDAO.delete(4)
-                assertEquals(3, userDAO.getAll().size)
-            }
-        }
-
-        @Test
-        fun `deleting an existing user in table results in record being deleted`() {
-            transaction {
-
-                //Arrange - create and populate table with three users
-                val userDAO = populateUserTable()
-
-                //Act & Assert
-                assertEquals(3, userDAO.getAll().size)
-                userDAO.delete(user3.id)
-                assertEquals(2, userDAO.getAll().size)
             }
         }
     }
@@ -190,6 +156,37 @@ class UserDAOTest {
                 userDAO.update(4, user4Updated)
                 assertEquals(null, userDAO.findById(4))
                 assertEquals(3, userDAO.getAll().size)
+            }
+        }
+    }
+
+    @Nested
+    inner class DeleteUsers {
+        @Test
+        fun `deleting a non-existant user in table results in no deletion`() {
+            transaction {
+
+                //Arrange - create and populate table with three users
+                val userDAO = populateUserTable()
+
+                //Act & Assert
+                assertEquals(3, userDAO.getAll().size)
+                userDAO.delete(4)
+                assertEquals(3, userDAO.getAll().size)
+            }
+        }
+
+        @Test
+        fun `deleting an existing user in table results in record being deleted`() {
+            transaction {
+
+                //Arrange - create and populate table with three users
+                val userDAO = populateUserTable()
+
+                //Act & Assert
+                assertEquals(3, userDAO.getAll().size)
+                userDAO.delete(user3.id)
+                assertEquals(2, userDAO.getAll().size)
             }
         }
     }
