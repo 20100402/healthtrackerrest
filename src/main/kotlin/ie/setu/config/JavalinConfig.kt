@@ -1,6 +1,6 @@
 package ie.setu.config
 
-import ie.setu.controllers.HealthTrackerController
+import ie.setu.controllers.*
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
 import io.javalin.plugin.openapi.ui.SwaggerOptions
@@ -34,24 +34,96 @@ class JavalinConfig {
     private fun registerRoutes(app: Javalin) {
         app.routes {
             path("/api/users") {
-                get(HealthTrackerController::getAllUsers)
-                post(HealthTrackerController::addUser)
+                get(UserController::getAllUsers)
+                post(UserController::addUser)
                 path("{user-id}"){
-                    get(HealthTrackerController::getUserByUserId)
-                    delete(HealthTrackerController::deleteUser)
-                    patch(HealthTrackerController::updateUser)
+                    get(UserController::getUserByUserId)
+                    delete(UserController::deleteUser)
+                    patch(UserController::updateUser)
                     path("activities"){
-                        get(HealthTrackerController::getActivitiesByUserId)
+                        get(ActivityController::getActivitiesByUserId)
+                        delete(ActivityController::deleteActivityByUserId)
+                    }
+                    path("foodtrackerdetails"){
+                        get(FoodTrackerController::getFoodTrackerDetailsByUserId)
+                        delete(FoodTrackerController::deleteFoodTrackerDetailsByUserId)
+                    }
+                    path("goalsettingdetails"){
+                        get(GoalSettingController::getGoalSettingDetailsByUserId)
+                        delete(GoalSettingController::deleteGoalSettingByUserId)
+                    }
+                    path("heartratemonitordetails"){
+                        get(HeartRateMonitorController::getHeartRateMonitorDetailsByUserId)
+                        delete(HeartRateMonitorController::deleteHeartRateMonitorByUserId)
+                    }
+                    path("onlineconsultationdetails"){
+                        get(OnlineConsultationController::getOnlineConsultationDetailsByUserId)
+                        delete(OnlineConsultationController::deleteOnlineConsultationByUserId)
+                    }
+                    path("sleeptrackerdetails"){
+                        get(SleepTrackerController::getSleepTrackerDetailsByUserId)
+                        delete(SleepTrackerController::deleteSleepTrackerByUserId)
                     }
                 }
                 path("/email/{email}"){
-                    get(HealthTrackerController::getUserByEmail)
+                    get(UserController::getUserByEmail)
                 }
             }
             path("/api/activities") {
-                get(HealthTrackerController::getAllActivities)
-                post(HealthTrackerController::addActivity)
+                get(ActivityController::getAllActivities)
+                post(ActivityController::addActivity)
+                path("{activity-id}") {
+                    get(ActivityController::getActivitiesByActivityId)
+                    delete(ActivityController::deleteActivityByActivityId)
+                    patch(ActivityController::updateActivity)
+                }
             }
+            path("/api/foodtrackerdetails") {
+                get(FoodTrackerController::getAllFoodTrackerDetails)
+                post(FoodTrackerController::addFoodTracker)
+                path("{foodtracker-id}") {
+                    get(FoodTrackerController::getFoodTrackerDetailsByFoodTrackerId)
+                    delete(FoodTrackerController::deleteFoodTrackerDetailsByFoodTrackerDetailsId)
+                    patch(FoodTrackerController::updateFoodTrackerDetails)
+                }
+            }
+            path("/api/goalsettingdetails") {
+                get(GoalSettingController::getAllGoalSettingDetails)
+                post(GoalSettingController::addGoalSetting)
+                path("{goalsetting-id}") {
+                    get(GoalSettingController::getGoalSettingDetailsByGoalSettingId)
+                    delete(GoalSettingController::deleteGoalSettingByGoalSettingId)
+                    patch(GoalSettingController::updateGoalSetting)
+                }
+            }
+            path("/api/heartratemonitordetails") {
+                get(HeartRateMonitorController::getAllHeartRateMonitorDetails)
+                post(HeartRateMonitorController::addHeartRateMonitor)
+                path("{heartratemonitor-id}") {
+                    get(HeartRateMonitorController::getHeartRateMonitorDetailsByHeartRateMonitorId)
+                    delete(HeartRateMonitorController::deleteHeartRateMonitorByHeartRateMonitorId)
+                    patch(HeartRateMonitorController::updateHeartRateMonitor)
+                }
+            }
+            path("/api/onlineconsultationdetails") {
+                get(OnlineConsultationController::getAllOnlineConsultationDetails)
+                post(OnlineConsultationController::addOnlineConsultation)
+                path("{onlineconsultation-id}") {
+                    get(OnlineConsultationController::getOnlineConsultationDetailsByOnlineConsultationId)
+                    delete(OnlineConsultationController::deleteOnlineConsultationByOnlineConsultationId)
+                    patch(OnlineConsultationController::updateOnlineConsultation)
+                }
+            }
+            path("/api/sleeptrackerdetails") {
+                get(SleepTrackerController::getAllSleepTrackerDetails)
+                post(SleepTrackerController::addSleepTracker)
+                path("{sleeptracker-id}") {
+                    get(SleepTrackerController::getSleepTrackerDetailsBySleepTrackerId)
+                    delete(SleepTrackerController::deleteSleepTrackerBySleepTrackerId)
+                    patch(SleepTrackerController::updateSleepTracker)
+                }
+            }
+
         }
     }
 
