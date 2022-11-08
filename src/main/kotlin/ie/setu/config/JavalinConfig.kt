@@ -1,8 +1,10 @@
 package ie.setu.config
 
 import ie.setu.controllers.*
+import ie.setu.utils.jsonObjectMapper
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.*
+import io.javalin.plugin.json.JavalinJackson
 import io.javalin.plugin.openapi.ui.SwaggerOptions
 import io.javalin.plugin.openapi.OpenApiOptions
 import io.javalin.plugin.openapi.OpenApiPlugin
@@ -15,6 +17,9 @@ class JavalinConfig {
         val app = Javalin.create {
             it.registerPlugin(getConfiguredOpenApiPlugin())
             it.defaultContentType = "application/json"
+            //added this jsonMapper for our integration tests - serialise objects to json
+            it.jsonMapper(JavalinJackson(jsonObjectMapper()))
+            it.enableWebjars()
         }.apply {
             exception(Exception::class.java) { e, _ -> e.printStackTrace() }
             error(404) { ctx -> ctx.json("404 - Not Found") }
@@ -36,36 +41,36 @@ class JavalinConfig {
             path("/api/users") {
                 get(UserController::getAllUsers)
                 post(UserController::addUser)
-                path("{user-id}"){
+                path("{user-id}") {
                     get(UserController::getUserByUserId)
                     delete(UserController::deleteUser)
                     patch(UserController::updateUser)
-                    path("activities"){
+                    path("activities") {
                         get(ActivityController::getActivitiesByUserId)
                         delete(ActivityController::deleteActivityByUserId)
                     }
-                    path("foodtrackerdetails"){
+                    path("foodtrackerdetails") {
                         get(FoodTrackerController::getFoodTrackerDetailsByUserId)
                         delete(FoodTrackerController::deleteFoodTrackerDetailsByUserId)
                     }
-                    path("goalsettingdetails"){
+                    path("goalsettingdetails") {
                         get(GoalSettingController::getGoalSettingDetailsByUserId)
                         delete(GoalSettingController::deleteGoalSettingByUserId)
                     }
-                    path("heartratemonitordetails"){
+                    path("heartratemonitordetails") {
                         get(HeartRateMonitorController::getHeartRateMonitorDetailsByUserId)
                         delete(HeartRateMonitorController::deleteHeartRateMonitorByUserId)
                     }
-                    path("onlineconsultationdetails"){
+                    path("onlineconsultationdetails") {
                         get(OnlineConsultationController::getOnlineConsultationDetailsByUserId)
                         delete(OnlineConsultationController::deleteOnlineConsultationByUserId)
                     }
-                    path("sleeptrackerdetails"){
+                    path("sleeptrackerdetails") {
                         get(SleepTrackerController::getSleepTrackerDetailsByUserId)
                         delete(SleepTrackerController::deleteSleepTrackerByUserId)
                     }
                 }
-                path("/email/{email}"){
+                path("/email/{email}") {
                     get(UserController::getUserByEmail)
                 }
             }
@@ -140,4 +145,5 @@ class JavalinConfig {
             reDoc(ReDocOptions("/redoc")) // endpoint for redoc
         }
     )
+
 }
