@@ -17,8 +17,7 @@ jobs:
           cache: 'maven'
       - name: Maven Package
         run: mvn -B clean package -DskipTests
-
-test:
+  test:
     name: Maven Tests
     needs: package
     runs-on: ubuntu-latest
@@ -32,4 +31,6 @@ test:
           cache: 'maven'
       - name: Maven Verify
         run: mvn -B clean verify
+      
+
 
