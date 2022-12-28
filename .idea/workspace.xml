@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8cf2d370-dd0d-4880-b593-10a2a576f7c8" name="Changes" comment="Additional Features added">
+    <list default="true" id="8cf2d370-dd0d-4880-b593-10a2a576f7c8" name="Changes" comment="Additional Features added- modified">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/ActivityController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/ActivityController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/DBConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/DBConfig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/ActivityDAOTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/ActivityDAOTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
     <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/Desktop" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -167,7 +168,12 @@
       <workItem from="1667863609100" duration="2841000" />
       <workItem from="1667879766206" duration="15786000" />
       <workItem from="1667914856994" duration="97000" />
-      <workItem from="1667915118597" duration="4151000" />
+      <workItem from="1667915118597" duration="5842000" />
+      <workItem from="1668454947118" duration="4276000" />
+      <workItem from="1668537084087" duration="4016000" />
+      <workItem from="1668688503262" duration="953000" />
+      <workItem from="1670105874737" duration="362000" />
+      <workItem from="1672261116099" duration="945000" />
     </task>
     <task id="LOCAL-00001" summary="added heroku">
       <created>1667741837097</created>
@@ -204,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667915833597</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Additional Features added- modified">
+      <created>1667919572814</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667919572814</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +241,8 @@
     <MESSAGE value="Activities added" />
     <MESSAGE value="Integration Tests added" />
     <MESSAGE value="Additional Features added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Additional Features added" />
+    <MESSAGE value="Additional Features added- modified" />
+    <option name="LAST_COMMIT_MESSAGE" value="Additional Features added- modified" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/healthtrackerrest$ie_setu_in_healthtrackerrest.ic" NAME="ie.setu in healthtrackerrest Coverage Results" MODIFIED="1667918987689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
