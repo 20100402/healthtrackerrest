@@ -9,6 +9,7 @@ import io.javalin.plugin.openapi.ui.SwaggerOptions
 import io.javalin.plugin.openapi.OpenApiOptions
 import io.javalin.plugin.openapi.OpenApiPlugin
 import io.javalin.plugin.openapi.ui.ReDocOptions
+import io.javalin.plugin.rendering.vue.VueComponent
 import io.swagger.v3.oas.models.info.Info
 class JavalinConfig {
 
@@ -128,6 +129,13 @@ class JavalinConfig {
                     patch(SleepTrackerController::updateSleepTracker)
                 }
             }
+            // The @routeComponent that we added in layout.html earlier will be replaced
+            // by the String inside of VueComponent. This means a call to / will load
+            // the layout and display our <home-page> component.
+            get("/", VueComponent("<home-page></home-page>"))
+            get("/users", VueComponent("<user-overview></user-overview>"))
+            get("/users/{user-id}", VueComponent("<user-profile></user-profile>"))
+            get("/users/{user-id}/activities", VueComponent("<user-activity-overview></user-activity-overview>"))
 
         }
     }
