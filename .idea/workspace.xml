@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8cf2d370-dd0d-4880-b593-10a2a576f7c8" name="Changes" comment="Vue added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/vue/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vue/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/vue/views/user-overview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vue/views/user-overview.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/vue/views/user-profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vue/views/user-profile.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/repository/UserDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/repository/UserDAO.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +66,22 @@
     </key>
   </component>
   <component name="RunManager" selected="Kotlin.AppKt">
+    <configuration name="UserDAOTest$ReadUsers.get user by id that doesn't exist, results in no user returned" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="healthtrackerrest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ie.setu.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ie.setu.repository.UserDAOTest" />
+      <option name="MAIN_CLASS_NAME" value="ie.setu.repository.UserDAOTest$ReadUsers" />
+      <option name="METHOD_NAME" value="get user by id that doesn't exist, results in no user returned" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserDAOTest" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="healthtrackerrest" />
       <extension name="coverage">
@@ -154,6 +169,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.AppKt" />
+        <item itemvalue="JUnit.UserDAOTest$ReadUsers.get user by id that doesn't exist, results in no user returned" />
         <item itemvalue="JUnit.ie.setu.controllers in healthtrackerrest" />
         <item itemvalue="JUnit.ie.setu in healthtrackerrest" />
         <item itemvalue="JUnit.UserDAOTest" />
@@ -179,7 +195,8 @@
       <workItem from="1668688503262" duration="953000" />
       <workItem from="1670105874737" duration="362000" />
       <workItem from="1672261116099" duration="2829000" />
-      <workItem from="1672264802444" duration="5451000" />
+      <workItem from="1672264802444" duration="6353000" />
+      <workItem from="1672272017052" duration="2410000" />
     </task>
     <task id="LOCAL-00001" summary="added heroku">
       <created>1667741837097</created>
@@ -237,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672268246759</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Vue added">
+      <created>1672270562268</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1672270562269</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
