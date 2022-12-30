@@ -47,11 +47,25 @@
       <div class="card-footer text-left">
         <p  v-if="activities.length == 0"> No activities yet...</p>
         <p  v-if="activities.length > 0"> Activities so far...</p>
-        <ul>
-          <li v-for="activity in activities">
-            {{ activity.description }} for {{ activity.duration }} minutes
-          </li>
-        </ul>
+        <div class="list-group list-group-flush">
+          <div class="list-group-item d-flex align-items-start"
+               v-for="(activity,index) in activities" v-bind:key="index">
+            <div class="mr-auto p-2">
+              <span><a :href="`/activities/${activity.id}`"> {{ activity.description }} for {{ activity.duration }} minutes</a></span>
+            </div>
+            <div class="p2">
+              <a :href="`/activities/${activity.id}`">
+                <button rel="tooltip" title="Update" class="btn btn-info btn-simple btn-link">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+              </a>
+              <button rel="tooltip" title="Delete" class="btn btn-info btn-simple btn-link"
+                      @click="deleteActivity(Activity, index)">
+                <i class="fas fa-trash" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -65,6 +79,7 @@ Vue.component("user-profile", {
     user: null,
     noUserFound: false,
     activities: [],
+    activity: null
   }),
   created: function () {
     const userId = this.$javalin.pathParams["user-id"];
@@ -111,7 +126,22 @@ Vue.component("user-profile", {
               console.log(error)
             });
       }
+    },
+    deleteActivity: function (activity, index) {
+      if (confirm('Are you sure you want to delete this activity? This action cannot be undone.', 'Warning')) {
+        //user confirmed delete
+        const activityId = activity.id;
+        const url = `/api/activities/${activityId}`;
+        axios.delete(url)
+            .then(response =>
+                //delete from the local state so Vue will reload list automatically
+                this.users.splice(index, 1).push(response.data))
+            .catch(function (error) {
+              console.log(error)
+            });
+      }
     }
   }
 });
 </script>
+

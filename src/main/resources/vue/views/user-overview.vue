@@ -103,3 +103,11 @@ Vue.component("user-overview", {
   }
 });
 </script>
+
+
+<style>
+
+.list-group {
+  padding-bottom: 20px;
+}
+</style>

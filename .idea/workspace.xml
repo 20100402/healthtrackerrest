@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8cf2d370-dd0d-4880-b593-10a2a576f7c8" name="Changes" comment="dokka added">
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/FoodTrackerDaoTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/GoalSettingDaoTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/HeartRateMonitorDaoTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/OnlineConsultationDaoTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/SleepTrackerDaoTest.kt" afterDir="false" />
+    <list default="true" id="8cf2d370-dd0d-4880-b593-10a2a576f7c8" name="Changes" comment="Vue added">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/vue/views/activity-details.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/vue/views/activity-overview.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/ActivityDAOTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/ActivityDAOTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vue/components/app-layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vue/components/app-layout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vue/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vue/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vue/views/home-page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vue/views/home-page.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vue/views/user-overview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vue/views/user-overview.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vue/views/user-profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vue/views/user-profile.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/GoalSettingDaoTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/GoalSettingDaoTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +31,9 @@
       <list>
         <option value="Class" />
         <option value="HTML File" />
-        <option value="Vue Single File Component" />
         <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -52,21 +56,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/arbazahmed/IdeaProjects/healthtrackerrest/src/main/kotlin/ie/setu/domain/repository&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/arbazahmed/IdeaProjects/healthtrackerrest/src/main/kotlin/ie/setu/domain/repository",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/test/kotlin/ie/setu" />
@@ -74,18 +81,11 @@
       <recent name="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ie.setu.repository in healthtrackerrest">
-    <configuration name="FoodTrackerDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Kotlin.AppKt">
+    <configuration name="All in healthtrackerrest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="healthtrackerrest" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ie.setu.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ie.setu.repository" />
-      <option name="MAIN_CLASS_NAME" value="ie.setu.repository.FoodTrackerDaoTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -120,21 +120,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SleepTrackerDaoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="healthtrackerrest" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ie.setu.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ie.setu.repository" />
-      <option name="MAIN_CLASS_NAME" value="ie.setu.repository.SleepTrackerDaoTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ie.setu.repository in healthtrackerrest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="healthtrackerrest" />
       <extension name="coverage">
@@ -145,6 +130,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="ie.setu.repository" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ie.setu.AppKt" />
+      <module name="healthtrackerrest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -176,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.AppKt" />
+        <item itemvalue="JUnit.All in healthtrackerrest" />
         <item itemvalue="JUnit.ie.setu.repository in healthtrackerrest" />
         <item itemvalue="JUnit.GoalSettingDaoTest" />
         <item itemvalue="JUnit.HeartRateMonitorDaoTest" />
-        <item itemvalue="JUnit.FoodTrackerDaoTest" />
-        <item itemvalue="JUnit.SleepTrackerDaoTest" />
       </list>
     </recent_temporary>
   </component>
@@ -276,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672275109328</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Unit tests for additional features added">
+      <created>1672379463670</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1672379463670</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,9 +301,10 @@
     <MESSAGE value="Additional Features added" />
     <MESSAGE value="Additional Features added- modified" />
     <MESSAGE value="DB config updated" />
-    <MESSAGE value="Vue added" />
     <MESSAGE value="dokka added" />
-    <option name="LAST_COMMIT_MESSAGE" value="dokka added" />
+    <MESSAGE value="Unit tests for additional features added" />
+    <MESSAGE value="Vue added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Vue added" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/healthtrackerrest$ie_setu_in_healthtrackerrest.ic" NAME="ie.setu in healthtrackerrest Coverage Results" MODIFIED="1667918987689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -322,5 +322,6 @@
     <SUITE FILE_PATH="coverage/healthtrackerrest$ie_setu_repository_in_healthtrackerrest.ic" NAME="ie.setu.repository in healthtrackerrest Coverage Results" MODIFIED="1667749801435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ie.setu.repository.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/healthtrackerrest$All_in_healthtrackerrest.ic" NAME="All in healthtrackerrest Coverage Results" MODIFIED="1672380003819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

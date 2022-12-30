@@ -152,7 +152,7 @@ class GoalSettingDaoTest {
                 val goalSettingDAO = populateGoalSettersTable()
 
                 //Act & Assert
-                val goalSetting4updated = GoalSetting(id = 4, month = "July", bodyFatPercentage = 44.0, kilosReducedPerMonth = 12, date = DateTime.now(),
+                val goalSetting4updated = GoalSetting(id = 4, month = "June", bodyFatPercentage = 33.0, kilosReducedPerMonth = 8, date = DateTime.now(),
                     userId = 2)
                 goalSettingDAO.updateByGoalSettingId(4, goalSetting4updated)
                 assertEquals(null, goalSettingDAO.findByGoalSettingId(4))

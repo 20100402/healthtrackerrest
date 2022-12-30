@@ -1,6 +1,9 @@
 <template id="app-layout">
-  <div class="app-layout">
+  <div class="app-layout theme">
     <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/">SETU HealthTracker</a>
+      </nav>
       <!-- Start of navbar -->
       <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="/">Home</a>
@@ -17,8 +20,15 @@
                 Users <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/activities">Activities</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="/activities">
+                Activities <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/onlineconsultationdetails">
+                Consultations <span class="sr-only">(current)</span>
+              </a>
             </li>
           </ul>
         </div>
@@ -40,7 +50,17 @@ Vue.component("app-layout", {template: "#app-layout"});
 </script>
 
 <style>
-.navbar{
-  background-color: #e3f2fd;
+
+.navbar-dark{
+  background-color: #4e979b;
+}
+.navbar-light{
+  background-color: #55a8ac;
+}
+.theme{
+  background-color: #c3d6d9;
+}
+.container{
+  background-color: #c4cacc;
 }
 </style>
