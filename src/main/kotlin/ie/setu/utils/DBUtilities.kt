@@ -20,39 +20,42 @@ fun mapToActivity(it: ResultRow) = Activity(
 )
 
 fun mapToFoodTracker(it: ResultRow) = FoodTracker(
-    id = it[FoodTrackerDetails.id],
-    meal = it[FoodTrackerDetails.meal],
-    caloriesIntake = it[FoodTrackerDetails.caloriesIntake],
-    userId = it[FoodTrackerDetails.userId]
+    id = it[FoodIntakeTracker.id],
+    meal = it[FoodIntakeTracker.meal],
+    caloriesIntake = it[FoodIntakeTracker.caloriesIntake],
+    date = it[FoodIntakeTracker.date],
+    userId = it[FoodIntakeTracker.userId]
 )
 
 fun mapToGoalSetting(it: ResultRow) = GoalSetting(
-    id = it[GoalSettingDetails.id],
-    month = it[GoalSettingDetails.month],
-    bodyFatPercentage = it[GoalSettingDetails.bodyFatPercentage],
-    kilosReducedPerMonth = it[GoalSettingDetails.kilosReducedPerMonth],
-    userId = it[GoalSettingDetails.userId]
+    id = it[GoalSetters.id],
+    month = it[GoalSetters.month],
+    bodyFatPercentage = it[GoalSetters.bodyFatPercentage],
+    kilosReducedPerMonth = it[GoalSetters.kilosReducedPerMonth],
+    date = it[GoalSetters.date],
+    userId = it[GoalSetters.userId]
 )
 
 fun mapToHeartRateMonitor(it: ResultRow) = HeartRateMonitor(
-    id = it[HeartRateMonitorDetails.id],
-    heartRate = it[HeartRateMonitorDetails.heartRate],
-    pulse = it[HeartRateMonitorDetails.pulse],
-    userId = it[HeartRateMonitorDetails.userId]
+    id = it[HeartRateMonitoring.id],
+    pulse = it[HeartRateMonitoring.pulse],
+    date = it[HeartRateMonitoring.date],
+    userId = it[HeartRateMonitoring.userId]
 )
 
 fun mapToOnlineConsultation(it: ResultRow) = OnlineConsultation(
-    id = it[OnlineConsultationDetails.id],
-    doctorName = it[OnlineConsultationDetails.doctorName],
-    appointmentDate = it[OnlineConsultationDetails.appointmentDate],
-    userId = it[OnlineConsultationDetails.userId]
+    id = it[OnlineConsultations.id],
+    doctorName = it[OnlineConsultations.doctorName],
+    appointmentDate = it[OnlineConsultations.appointmentDate],
+    remarks = it[OnlineConsultations.remarks],
+    userId = it[OnlineConsultations.userId]
 )
 
 fun mapToSleepTracker(it: ResultRow) = SleepTracker(
-    id = it[SleepTrackerDetails.id],
-    hoursPerDay = it[SleepTrackerDetails.hoursPerDay],
-    totalHoursPerWeek = it[SleepTrackerDetails.totalHoursPerWeek],
-    userId = it[SleepTrackerDetails.userId]
+    id = it[SleepTracking.id],
+    hours = it[SleepTracking.hours],
+    date = it[SleepTracking.date],
+    userId = it[SleepTracking.userId]
 )
 
 

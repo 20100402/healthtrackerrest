@@ -1,8 +1,7 @@
 package ie.setu.domain.repository
 
 import ie.setu.domain.FoodTracker
-import ie.setu.domain.db.Activities
-import ie.setu.domain.db.FoodTrackerDetails
+import ie.setu.domain.db.FoodIntakeTracker
 import ie.setu.utils.mapToFoodTracker
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
@@ -14,7 +13,7 @@ class FoodTrackerDAO {
     fun getAll(): ArrayList<FoodTracker> {
         val foodTrackerDetailsList: ArrayList<FoodTracker> = arrayListOf()
         transaction {
-            FoodTrackerDetails.selectAll().map {
+            FoodIntakeTracker.selectAll().map {
                 foodTrackerDetailsList.add(mapToFoodTracker(it)) }
         }
         return foodTrackerDetailsList
@@ -23,8 +22,8 @@ class FoodTrackerDAO {
     //Find a specific FoodTracker by FoodTracker id
     fun findByFoodTrackerId(id: Int): FoodTracker?{
         return transaction {
-            FoodTrackerDetails
-                .select() { FoodTrackerDetails.id eq id}
+            FoodIntakeTracker
+                .select() { FoodIntakeTracker.id eq id}
                 .map{ mapToFoodTracker(it) }
                 .firstOrNull()
         }
@@ -33,8 +32,8 @@ class FoodTrackerDAO {
     //Find all FoodTrackerDetails for a specific user id
     fun findByUserId(userId: Int): List<FoodTracker>{
         return transaction {
-            FoodTrackerDetails
-                .select { FoodTrackerDetails.userId eq userId}
+            FoodIntakeTracker
+                .select { FoodIntakeTracker.userId eq userId}
                 .map { mapToFoodTracker(it) }
         }
     }
@@ -42,20 +41,22 @@ class FoodTrackerDAO {
     //Save an FoodTracker to the database
     fun save(foodTracker: FoodTracker): Int {
         return transaction {
-            FoodTrackerDetails.insert {
+            FoodIntakeTracker.insert {
                 it[meal] = foodTracker.meal
                 it[caloriesIntake] = foodTracker.caloriesIntake
+                it[date] = foodTracker.date
                 it[userId] = foodTracker.userId
             }
-        } get FoodTrackerDetails.id
+        } get FoodIntakeTracker.id
     }
 
     fun updateByFoodTrackerId(foodTrackerId: Int, foodTrackerToUpdate: FoodTracker) : Int{
         return transaction {
-            FoodTrackerDetails.update ({
-                FoodTrackerDetails.id eq foodTrackerId}) {
+            FoodIntakeTracker.update ({
+                FoodIntakeTracker.id eq foodTrackerId}) {
                 it[meal] = foodTrackerToUpdate.meal
                 it[caloriesIntake] = foodTrackerToUpdate.caloriesIntake
+                it[date] = foodTrackerToUpdate.date
                 it[userId] = foodTrackerToUpdate.userId
             }
         }
@@ -63,13 +64,13 @@ class FoodTrackerDAO {
 
     fun deleteByFoodTrackerId (FoodTrackerId: Int): Int{
         return transaction{
-            FoodTrackerDetails.deleteWhere { FoodTrackerDetails.id eq FoodTrackerId }
+            FoodIntakeTracker.deleteWhere { FoodIntakeTracker.id eq FoodTrackerId }
         }
     }
 
     fun deleteByUserId (userId: Int): Int{
         return transaction{
-            FoodTrackerDetails.deleteWhere { FoodTrackerDetails.userId eq userId }
+            FoodIntakeTracker.deleteWhere { FoodIntakeTracker.userId eq userId }
         }
     }
 }
