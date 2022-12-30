@@ -114,8 +114,8 @@
       </div>
 
       <div class="card-footer text-left">
-        <p  v-if="activities.length == 0"> No FoodTracker Details yet...</p>
-        <p  v-if="activities.length > 0"> FoodTracker Details so far...</p>
+        <p  v-if="foodTrackerDetails.length == 0"> No FoodTracker Details yet...</p>
+        <p  v-if="foodTrackerDetails.length > 0"> FoodTracker Details so far...</p>
         <div class="card bg-light mb-3">
           <div class="card-header">
             <div class="row">
@@ -159,7 +159,7 @@
           <div class="list-group-item d-flex align-items-start"
                v-for="(foodtracker,index) in foodTrackerDetails" v-bind:key="index">
             <div class="mr-auto p-2">
-              <span><a :href="`/foodtrackerdetails/${foodtracker.id}`"> {{ foodtracker.caloriesintake }} for {{ foodtracker.meal }} </a></span>
+              <span><a :href="`/foodtrackerdetails/${foodtracker.id}`"> {{ foodtracker.caloriesIntake }} calories for {{ foodtracker.meal }} </a></span>
             </div>
             <div class="p2">
               <a :href="`/foodtrackerdetails/${foodtracker.id}`">
@@ -169,6 +169,252 @@
               </a>
               <button rel="tooltip" title="Delete" class="btn btn-info btn-simple btn-link"
                       @click="deleteFoodTracker(foodtracker, index)">
+                <i class="fas fa-trash" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer text-left">
+        <p  v-if="goalSettingDetails.length == 0"> No Goal Setting Details yet...</p>
+        <p  v-if="goalSettingDetails.length > 0"> Goal Setting Details so far...</p>
+        <div class="card bg-light mb-3">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-6">
+                Add Goals
+              </div>
+              <div class="col" align="right">
+                <button rel="tooltip" title="Add"
+                        class="btn btn-info btn-simple btn-link"
+                        @click="hideForm =!hideForm">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" :class="{ 'd-none': hideForm}">
+            <form id="addGoalSetting">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="input-goalsetting-month">Month</span>
+                </div>
+                <input type="month" class="form-control" v-model="formData.month" name="month" placeholder="Month"/>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="input-goalsetting-bodyfatpercentage">Body Fat Percentage</span>
+                </div>
+                <input type="number" class="form-control" v-model="formData.bodyfatpercentage" name="bodyfatpercentage" placeholder="Body Fat Percentage"/>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="input-goalsetting-kilosreducedpermonth">Kilos Reduced Per Month</span>
+                </div>
+                <input type="number" class="form-control" v-model="formData.kilosreducedpermonth" name="kilosreducedpermonth" placeholder="Kilos Reduced Per Month"/>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="input-goalsetting-date">Date</span>
+                </div>
+                <input type="datetime-local" class="form-control" v-model="formData.date" name="date" placeholder="Date"/>
+              </div>
+            </form>
+            <button rel="tooltip" title="Update" class="btn btn-info btn-simple btn-link" @click="addGoalSetting()">Add Goals</button>
+          </div>
+        </div>
+        <div class="list-group list-group-flush">
+          <div class="list-group-item d-flex align-items-start"
+               v-for="(goalsetting,index) in goalSettingDetails" v-bind:key="index">
+            <div class="mr-auto p-2">
+              <span><a :href="`/goalsettingdetails/${goalsetting.id}`"> {{ goalsetting.kilosReducedPerMonth }} kilos reduced for the month {{ goalsetting.month }} </a></span>
+            </div>
+            <div class="p2">
+              <a :href="`/goalsettingdetails/${goalsetting.id}`">
+                <button rel="tooltip" title="Update" class="btn btn-info btn-simple btn-link">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+              </a>
+              <button rel="tooltip" title="Delete" class="btn btn-info btn-simple btn-link"
+                      @click="deleteGoalSetting(goalsetting, index)">
+                <i class="fas fa-trash" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer text-left">
+        <p  v-if="heartRateMonitorDetails.length == 0"> No HeartRate Monitoring Details yet...</p>
+        <p  v-if="heartRateMonitorDetails.length > 0"> Heart Rate Monitoring Details so far...</p>
+        <div class="card bg-light mb-3">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-6">
+                Add HeartRate Monitoring details
+              </div>
+              <div class="col" align="right">
+                <button rel="tooltip" title="Add"
+                        class="btn btn-info btn-simple btn-link"
+                        @click="hideForm =!hideForm">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" :class="{ 'd-none': hideForm}">
+            <form id="addHeartRateMonitor">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="input-heartratemonitor-pulse">Pulse</span>
+                </div>
+                <input type="number" class="form-control" v-model="formData.pulse" name="pulse" placeholder="Pulse"/>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="input-heartratemonitor-date">Date</span>
+                </div>
+                <input type="datetime-local" class="form-control" v-model="formData.date" name="date" placeholder="Date"/>
+              </div>
+            </form>
+            <button rel="tooltip" title="Update" class="btn btn-info btn-simple btn-link" @click="addHeartRateMonitor()">Add HeartRate Montoring Details</button>
+          </div>
+        </div>
+        <div class="list-group list-group-flush">
+          <div class="list-group-item d-flex align-items-start"
+               v-for="(heartratemonitor,index) in heartRateMonitorDetails" v-bind:key="index">
+            <div class="mr-auto p-2">
+              <span><a :href="`/heartratemonitordetails/${heartratemonitor.id}`"> Pulse was {{ heartratemonitor.pulse }} on {{ heartratemonitor.date }} </a></span>
+            </div>
+            <div class="p2">
+              <a :href="`/heartratemonitordetails/${heartratemonitor.id}`">
+                <button rel="tooltip" title="Update" class="btn btn-info btn-simple btn-link">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+              </a>
+              <button rel="tooltip" title="Delete" class="btn btn-info btn-simple btn-link"
+                      @click="deleteHeartRateMonitor(heartratemonitor, index)">
+                <i class="fas fa-trash" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer text-left">
+        <p  v-if="onlineConsultationDetails.length == 0"> No Consultation Details yet...</p>
+        <p  v-if="onlineConsultationDetails.length > 0"> Consultation Details...</p>
+        <div class="card bg-light mb-3">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-6">
+                Add Consultation details
+              </div>
+              <div class="col" align="right">
+                <button rel="tooltip" title="Add"
+                        class="btn btn-info btn-simple btn-link"
+                        @click="hideForm =!hideForm">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" :class="{ 'd-none': hideForm}">
+            <form id="addOnlineConsultation">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="input-onlineconsultation-doctorname">Doctor's Name</span>
+                </div>
+                <input type="text" class="form-control" v-model="formData.doctorname" name="doctorname" placeholder="Doctor's Name"/>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="input-onlineconsultation-remarks">Remarks</span>
+                </div>
+                <input type="text" class="form-control" v-model="formData.remarks" name="remarks" placeholder="Remarks"/>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="input-onlineconsultation-appointmentdate">Appointment Date</span>
+                </div>
+                <input type="datetime-local" class="form-control" v-model="formData.appointmentdate" name="appointmentdate" placeholder="Appointment Date"/>
+              </div>
+            </form>
+            <button rel="tooltip" title="Update" class="btn btn-info btn-simple btn-link" @click="addOnlineConsultation()">Add Consultation Details</button>
+          </div>
+        </div>
+        <div class="list-group list-group-flush">
+          <div class="list-group-item d-flex align-items-start"
+               v-for="(onlineconsultation,index) in onlineConsultationDetails" v-bind:key="index">
+            <div class="mr-auto p-2">
+              <span><a :href="`/onlineconsultationdetails/${onlineconsultation.id}`"> Remarks by {{ onlineconsultation.doctorName }}  -  {{ onlineconsultation.remarks }} </a></span>
+            </div>
+            <div class="p2">
+              <a :href="`/onlineconsultationdetails/${onlineconsultation.id}`">
+                <button rel="tooltip" title="Update" class="btn btn-info btn-simple btn-link">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+              </a>
+              <button rel="tooltip" title="Delete" class="btn btn-info btn-simple btn-link"
+                      @click="deleteOnlineConsultation(onlineconsultation, index)">
+                <i class="fas fa-trash" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer text-left">
+        <p  v-if="sleepTrackerDetails.length == 0"> No Sleep Tracking Details yet...</p>
+        <p  v-if="sleepTrackerDetails.length > 0"> Sleep Tracking Details...</p>
+        <div class="card bg-light mb-3">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-6">
+                Add Sleep Tracking details
+              </div>
+              <div class="col" align="right">
+                <button rel="tooltip" title="Add"
+                        class="btn btn-info btn-simple btn-link"
+                        @click="hideForm =!hideForm">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" :class="{ 'd-none': hideForm}">
+            <form id="addSleepTracker">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="input-sleeptracker-hours">Hours</span>
+                </div>
+                <input type="number" class="form-control" v-model="formData.hours" name="hours" placeholder="Hours"/>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="input-sleeptracker-date">Date</span>
+                </div>
+                <input type="datetime-local" class="form-control" v-model="formData.date" name="date" placeholder="Date"/>
+              </div>
+            </form>
+            <button rel="tooltip" title="Update" class="btn btn-info btn-simple btn-link" @click="addSleepTracker()">Add Sleep Tracking Details</button>
+          </div>
+        </div>
+        <div class="list-group list-group-flush">
+          <div class="list-group-item d-flex align-items-start"
+               v-for="(sleeptracker,index) in sleepTrackerDetails" v-bind:key="index">
+            <div class="mr-auto p-2">
+              <span><a :href="`/sleeptrackerdetails/${sleeptracker.id}`"> {{ sleeptracker.hours }} hours on {{ sleeptracker.date }} </a></span>
+            </div>
+            <div class="p2">
+              <a :href="`/sleeptrackerdetails/${sleeptracker.id}`">
+                <button rel="tooltip" title="Update" class="btn btn-info btn-simple btn-link">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+              </a>
+              <button rel="tooltip" title="Delete" class="btn btn-info btn-simple btn-link"
+                      @click="deleteSleepTracker(foodtracker, index)">
                 <i class="fas fa-trash" aria-hidden="true"></i>
               </button>
             </div>
@@ -188,6 +434,10 @@ Vue.component("user-profile", {
     noUserFound: false,
     activities: [],
     foodTrackerDetails: [],
+    goalSettingDetails: [],
+    heartRateMonitorDetails: [],
+    onlineConsultationDetails: [],
+    sleepTrackerDetails: [],
     formData: [],
     hideForm :true,
   }),
@@ -207,6 +457,26 @@ Vue.component("user-profile", {
         })
     axios.get(url + `/foodtrackerdetails`)
         .then(res => this.foodTrackerDetails = res.data)
+        .catch(error => {
+          console.log("No details added yet (this is ok): " + error)
+        })
+    axios.get(url + `/goalsettingdetails`)
+        .then(res => this.goalSettingDetails = res.data)
+        .catch(error => {
+          console.log("No details added yet (this is ok): " + error)
+        })
+    axios.get(url + `/heartratemonitordetails`)
+        .then(res => this.heartRateMonitorDetails = res.data)
+        .catch(error => {
+          console.log("No details added yet (this is ok): " + error)
+        })
+    axios.get(url + `/onlineconsultationdetails`)
+        .then(res => this.onlineConsultationDetails = res.data)
+        .catch(error => {
+          console.log("No details added yet (this is ok): " + error)
+        })
+    axios.get(url + `/sleeptrackerdetails`)
+        .then(res => this.sleepTrackerDetails = res.data)
         .catch(error => {
           console.log("No details added yet (this is ok): " + error)
         })
@@ -299,6 +569,132 @@ Vue.component("user-profile", {
           })
           .then(response => {
             this.foodTrackerDetails.push(response.data)
+            this.hideForm= true;
+          })
+          .catch(error => {
+            console.log(error)
+          })
+    },
+    deleteGoalSetting: function (GoalSetting, index) {
+      if (confirm('Are you sure you want to delete this? This action cannot be undone.', 'Warning')) {
+        const goalsettingId = GoalSetting.id;
+        const url = `/api/goalsettingdetails/${goalsettingId}`;
+        axios.delete(url)
+            .then(response =>
+                //delete from the local state so Vue will reload list automatically
+                this.goalSettingDetails.splice(index, 1).push(response.data))
+            .catch(function (error) {
+              console.log(error)
+            });
+      }
+    },
+    addGoalSetting: function (){
+      const userId = this.$javalin.pathParams["user-id"];
+      const url = `/api/goalsettingdetails`;
+      axios.post(url,
+          {
+            month: this.formData.month,
+            bodyFatPercentage: this.formData.bodyfatpercentage,
+            kilosReducedPerMonth: this.formData.kilosreducedpermonth,
+            date: this.formData.date,
+            userId: userId
+          })
+          .then(response => {
+            this.goalSettingDetails.push(response.data)
+            this.hideForm= true;
+          })
+          .catch(error => {
+            console.log(error)
+          })
+    },
+
+    deleteHeartRateMonitor: function (HeartRateMonitor, index) {
+      if (confirm('Are you sure you want to delete this? This action cannot be undone.', 'Warning')) {
+        const heartratemonitorId = HeartRateMonitor.id;
+        const url = `/api/heartratemonitordetails/${heartratemonitorId}`;
+        axios.delete(url)
+            .then(response =>
+                //delete from the local state so Vue will reload list automatically
+                this.heartRateMonitorDetails.splice(index, 1).push(response.data))
+            .catch(function (error) {
+              console.log(error)
+            });
+      }
+    },
+    addHeartRateMonitor: function (){
+      const userId = this.$javalin.pathParams["user-id"];
+      const url = `/api/heartratemonitordetails`;
+      axios.post(url,
+          {
+            pulse: this.formData.pulse,
+            date: this.formData.date,
+            userId: userId
+          })
+          .then(response => {
+            this.heartRateMonitorDetails.push(response.data)
+            this.hideForm= true;
+          })
+          .catch(error => {
+            console.log(error)
+          })
+    },
+
+    deleteOnlineConsultation: function (OnlineConsultation, index) {
+      if (confirm('Are you sure you want to delete this? This action cannot be undone.', 'Warning')) {
+        const onlineConsultationId = OnlineConsultation.id;
+        const url = `/api/onlineconsultationdetails/${onlineConsultationId}`;
+        axios.delete(url)
+            .then(response =>
+                //delete from the local state so Vue will reload list automatically
+                this.onlineConsultationDetails.splice(index, 1).push(response.data))
+            .catch(function (error) {
+              console.log(error)
+            });
+      }
+    },
+    addOnlineConsultation: function (){
+      const userId = this.$javalin.pathParams["user-id"];
+      const url = `/api/onlineconsultationdetails`;
+      axios.post(url,
+          {
+            doctorName: this.formData.doctorname,
+            remarks: this.formData.remarks,
+            appointmentDate: this.formData.appointmentdate,
+            userId: userId
+          })
+          .then(response => {
+            this.onlineConsultationDetails.push(response.data)
+            this.hideForm= true;
+          })
+          .catch(error => {
+            console.log(error)
+          })
+    },
+
+    deleteSleepTracker: function (SleepTracker, index) {
+      if (confirm('Are you sure you want to delete this? This action cannot be undone.', 'Warning')) {
+        const sleeptrackerId = SleepTracker.id;
+        const url = `/api/sleeptrackerdetails/${sleeptrackerId}`;
+        axios.delete(url)
+            .then(response =>
+                //delete from the local state so Vue will reload list automatically
+                this.sleepTrackerDetails.splice(index, 1).push(response.data))
+            .catch(function (error) {
+              console.log(error)
+            });
+      }
+    },
+    addSleepTracker: function (){
+      const userId = this.$javalin.pathParams["user-id"];
+      const url = `/api/sleeptrackerdetails`;
+      axios.post(url,
+          {
+            hours: this.formData.hours,
+            date: this.formData.date,
+            userId: userId
+          })
+          .then(response => {
+            this.sleepTrackerDetails.push(response.data)
             this.hideForm= true;
           })
           .catch(error => {
