@@ -105,7 +105,15 @@ object ActivityController {
             ctx.status(404)
         }
     }
-
+    @OpenApi(
+        summary = "Delete Activity by Activity ID",
+        operationId = "deleteActivityByActivityId",
+        tags = ["Activity"],
+        path = "/api/activities/{activity-id",
+        method = HttpMethod.DELETE,
+        pathParams = [OpenApiParam("activity-id", Int::class, "The Activity ID")],
+        responses  = [OpenApiResponse("204")]
+    )
     fun deleteActivityByActivityId(ctx: Context){
         if (ActivityController.activityDAO.deleteByActivityId(ctx.pathParam("activity-id").toInt()) != 0)
             ctx.status(204)

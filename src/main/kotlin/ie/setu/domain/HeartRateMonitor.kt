@@ -1,7 +1,10 @@
 package ie.setu.domain
 
+import org.joda.time.DateTime
+import java.util.*
+
 data class HeartRateMonitor (var id: Int,
-                        var heartRate:Int,
-                        var pulse: Double,
-                        var userId: Int)
+                             var pulse:Int,
+                             var date: DateTime,
+                             var userId: Int)
 

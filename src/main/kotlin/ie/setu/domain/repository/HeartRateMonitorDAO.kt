@@ -1,19 +1,18 @@
 package ie.setu.domain.repository
 
 import ie.setu.domain.HeartRateMonitor
-import ie.setu.domain.db.HeartRateMonitorDetails
+import ie.setu.domain.db.HeartRateMonitoring
 import ie.setu.utils.mapToHeartRateMonitor
 import org.jetbrains.exposed.sql.*
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class HeartRateMonitorDAO {
 
-    //Get all the HeartRateMonitorDetails in the database regardless of user id
+    //Get all the HeartRateMonitoring in the database regardless of user id
     fun getAll(): ArrayList<HeartRateMonitor> {
         val heartRateMonitorDetailsList: ArrayList<HeartRateMonitor> = arrayListOf()
         transaction {
-            HeartRateMonitorDetails.selectAll().map {
+            HeartRateMonitoring.selectAll().map {
                 heartRateMonitorDetailsList.add(mapToHeartRateMonitor(it)) }
         }
         return heartRateMonitorDetailsList
@@ -22,18 +21,18 @@ class HeartRateMonitorDAO {
     //Find a specific HeartRateMonitor by HeartRateMonitor id
     fun findByHeartRateMonitorId(id: Int): HeartRateMonitor?{
         return transaction {
-            HeartRateMonitorDetails
-                .select() { HeartRateMonitorDetails.id eq id}
+            HeartRateMonitoring
+                .select() { HeartRateMonitoring.id eq id}
                 .map{ mapToHeartRateMonitor(it) }
                 .firstOrNull()
         }
     }
 
-    //Find all HeartRateMonitorDetails for a specific user id
+    //Find all HeartRateMonitoring for a specific user id
     fun findByUserId(userId: Int): List<HeartRateMonitor>{
         return transaction {
-            HeartRateMonitorDetails
-                .select { HeartRateMonitorDetails.userId eq userId}
+            HeartRateMonitoring
+                .select { HeartRateMonitoring.userId eq userId}
                 .map { mapToHeartRateMonitor(it) }
         }
     }
@@ -41,20 +40,20 @@ class HeartRateMonitorDAO {
     //Save an HeartRateMonitor to the database
     fun save(heartRateMonitor: HeartRateMonitor): Int {
         return transaction {
-            HeartRateMonitorDetails.insert {
-                it[heartRate] = heartRateMonitor.heartRate
+            HeartRateMonitoring.insert {
                 it[pulse] = heartRateMonitor.pulse
+                it[date] = heartRateMonitor.date
                 it[userId] = heartRateMonitor.userId
             }
-        } get HeartRateMonitorDetails.id
+        } get HeartRateMonitoring.id
     }
 
     fun updateByHeartRateMonitorId(heartRateMonitorId: Int, heartRateMonitorToUpdate: HeartRateMonitor) : Int{
         return transaction {
-            HeartRateMonitorDetails.update ({
-                HeartRateMonitorDetails.id eq heartRateMonitorId}) {
-                it[heartRate] = heartRateMonitorToUpdate.heartRate
+            HeartRateMonitoring.update ({
+                HeartRateMonitoring.id eq heartRateMonitorId}) {
                 it[pulse] = heartRateMonitorToUpdate.pulse
+                it[date] = heartRateMonitorToUpdate.date
                 it[userId] = heartRateMonitorToUpdate.userId
             }
         }
@@ -62,13 +61,13 @@ class HeartRateMonitorDAO {
 
     fun deleteByHeartRateMonitorId (HeartRateMonitorId: Int): Int{
         return transaction{
-            HeartRateMonitorDetails.deleteWhere { HeartRateMonitorDetails.id eq HeartRateMonitorId }
+            HeartRateMonitoring.deleteWhere { HeartRateMonitoring.id eq HeartRateMonitorId }
         }
     }
 
     fun deleteByUserId (userId: Int): Int{
         return transaction{
-            HeartRateMonitorDetails.deleteWhere { HeartRateMonitorDetails.userId eq userId }
+            HeartRateMonitoring.deleteWhere { HeartRateMonitoring.userId eq userId }
         }
     }
 }
