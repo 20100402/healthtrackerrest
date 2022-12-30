@@ -53,7 +53,7 @@ class ActivityDAOTest {
     inner class ReadActivities {
 
         @Test
-        fun `getting all activites from a populated table returns all rows`() {
+        fun `getting all activities from a populated table returns all rows`() {
             transaction {
                 //Arrange - create and populate tables with three users and three activities
                 val userDAO = populateUserTable()
